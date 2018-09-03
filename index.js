@@ -13,51 +13,6 @@ exports.init = function(_rootUrl, _dbname, _username, _password) {
   filemakerAPIUrl = _rootUrl + "/fmi/data/v1/databases/" + _dbname;       
 }
 
-exports.fileTextWrite = function(filekey, content) {
-
-  return new Promise((resolve, reject) => {
-    var postParameters = {
-        "command" : "WriteTextFile",
-        "APIKey" : APIKey,
-        "appID" : appID,
-        "filekey" : filekey,
-        "content" : content
-    };
-
-    request.post(
-    {
-        url:APIUrl,
-        form: postParameters
-      }, function(err,httpResponse,body){
-        return resolve(body);
-      }
-    );
-  });
-}
-
-
-exports.fileTextWrite = function(filekey, content) {
-
-  return new Promise((resolve, reject) => {
-    var postParameters = {
-        "command" : "WriteTextFile",
-        "APIKey" : APIKey,
-        "appID" : appID,
-        "filekey" : filekey,
-        "content" : content
-    };
-
-    request.post(
-    {
-        url:APIUrl,
-        form: postParameters
-      }, function(err,httpResponse,body){
-        return resolve(body);
-      }
-    );
-  });
-}
-
 
 function GetToken() {
     return new Promise(function(resolve, reject) {
@@ -69,6 +24,11 @@ function GetToken() {
             },
             method: 'POST'
         }, function(error, response, body) {
+
+            if ( error )
+            {
+                return resolve(error);
+            }
 
             //callback(null, body); // Return response from the server
             //return; // stop execution
@@ -100,6 +60,11 @@ async function ListRecords(layoutName, limit) {
             },
             method: 'GET'
         }, function(error, response, body) {
+        
+            if ( error )
+            {
+                return resolve(error);
+            }
             return resolve(body);
         });
 
@@ -120,6 +85,11 @@ async function FindRecords(layoutName, data) {
             method: 'POST',
             json: data
         }, function(error, response, body) {
+        
+            if ( error )
+            {
+                return resolve(error);
+            }
             return resolve(body);
         });
 
@@ -137,6 +107,11 @@ async function GetRecord(layoutName, id) {
             },
             method: 'GET'
         }, function(error, response, body) {
+        
+            if ( error )
+            {
+                return resolve(error);
+            }
             return resolve(body);
         });
 
@@ -156,6 +131,10 @@ async function CreateRecord(layoutName, data) {
             method: 'POST',
             json: data
         }, function(error, response, body) {
+            if ( error )
+            {
+                return resolve(error);
+            }
             return resolve(body);
         });
 
@@ -174,6 +153,11 @@ async function DeleteRecord(layoutName, id) {
             },
             method: 'DELETE'
         }, function(error, response, body) {
+        
+            if ( error )
+            {
+                return resolve(error);
+            }
             return resolve(body);
         });
 
@@ -193,6 +177,11 @@ async function EditRecord(layoutName, id, data) {
             method: 'PATCH',
             json: data
         }, function(error, response, body) {
+        
+            if ( error )
+            {
+                return resolve(error);
+            }
             return resolve(body);
         });
 
@@ -212,6 +201,11 @@ async function ExecuteScript(layoutName, data) {
             method: 'POST',
             json: data
         }, function(error, response, body) {
+        
+            if ( error )
+            {
+                return resolve(error);
+            }
             return resolve(body);
         });
 

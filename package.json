@@ -1,6 +1,6 @@
 {
   "name": "appdrag-datasource-filemaker",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Node.js Wrapper for Filemaker API 17+",
   "main": "index.js",
   "repository": {
