@@ -217,21 +217,30 @@ function ConvertToDataSource(records) {
     var datasource = new Object();
     datasource.Table = [];
 
-    var rows = records.response.data;
-    for (i = 0; i < rows.length; i++) {
-        var newLine = new Object();
-        newLine.recordId = rows[i].recordId;
-        newLine.modId = rows[i].modId;
-        for (key in rows[i].fieldData) {
-            newLine[key] = rows[i].fieldData[key];
-        }
-        newLine.portalData = rows[i].portalData;
-
-        datasource.Table.push(newLine);
-
+    try
+    {
+          var rows = records.response.data;
+          for (i = 0; i < rows.length; i++) {
+              var newLine = new Object();
+              newLine.recordId = rows[i].recordId;
+              newLine.modId = rows[i].modId;
+              for (key in rows[i].fieldData) {
+                  newLine[key] = rows[i].fieldData[key];
+              }
+              newLine.portalData = rows[i].portalData;
+      
+              datasource.Table.push(newLine);
+              return datasource;
+          }
     }
+    catch(ex)
+    {
+          return records;
+    }
+    
+    
 
-    return datasource;
+    
 }
 exports.ConvertToDataSource = ConvertToDataSource;
 

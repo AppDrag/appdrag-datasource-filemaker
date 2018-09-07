@@ -39,14 +39,14 @@ callback(null, filemaker.ConvertToDataSource(records) );
 ```
 var dataQuery = {
     "query": [{
-        "Nom": "=Jobs"
+        "Nom": "Jobs"
     }],
     "sort": [
         {"fieldName": "Prenom", "sortOrder": "ascend"},
         {"fieldName": "Nom","sortOrder": "ascend"}
     ]
 };
-var records = await filemaker.find("Api_Contact", dataQuery);
+var records = await filemaker.Find("Api_Contact", dataQuery);
 callback(null, filemaker.ConvertToDataSource(records));
 ```
 
