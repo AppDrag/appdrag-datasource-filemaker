@@ -217,10 +217,16 @@ function ConvertToDataSource(records) {
     var datasource = new Object();
     datasource.Table = [];
 
+    if ( records.response == null || records.response.data == null)
+    {
+        console.log("Error: " + records);
+        return records;
+    }
+
     try
     {
           var rows = records.response.data;
-          for (i = 0; i < rows.length; i++) {
+          for (i = 0; i < rows.length; i++) {        
               var newLine = new Object();
               newLine.recordId = rows[i].recordId;
               newLine.modId = rows[i].modId;
@@ -230,11 +236,12 @@ function ConvertToDataSource(records) {
               newLine.portalData = rows[i].portalData;
       
               datasource.Table.push(newLine);
-              return datasource;
           }
+          return datasource;
     }
     catch(ex)
     {
+          console.log("Error: " + ex);
           return records;
     }
     

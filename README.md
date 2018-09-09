@@ -46,13 +46,13 @@ var dataQuery = {
         {"fieldName": "Nom","sortOrder": "ascend"}
     ]
 };
-var records = await filemaker.Find("Api_Contact", dataQuery);
+var records = await filemaker.Find("your_layout_name", dataQuery);
 callback(null, filemaker.ConvertToDataSource(records));
 ```
 
 ### Get Record by id (layoutName, recordId) 
 ```
-var records = JSON.parse(await filemaker.Get("Api_Contact", 1));
+var records = JSON.parse(await filemaker.Get("your_layout_name", 1));
 callback(null, filemaker.ConvertToDataSource(records) );
 ```
 
@@ -65,7 +65,7 @@ var data = {
         "Nom": "Dupont"
     }
 };
-var response = await filemaker.Create("Api_Contact", data);
+var response = await filemaker.Create("your_layout_name", data);
 callback(null, response);
 ```
 
@@ -78,13 +78,13 @@ var data = {
         "Nom": "Dupond2"
     }
 };
-var response = await filemaker.Edit("Api_Contact", 8, data);
+var response = await filemaker.Edit("your_layout_name", 8, data);
 callback(null, response);
 ```
 
 ### Delete Record (layoutName, recordId) 
 ```
-var records = JSON.parse(await filemaker.Delete("Api_Contact", 1));
+var records = JSON.parse(await filemaker.Delete("your_layout_name", 1));
 callback(null, response); 
 ```
 
@@ -98,7 +98,7 @@ var query = {
     "script.presort": "YourScriptName2",
     "script": "YourScriptName3"
 };
-var response = await filemaker.Execute("Api_Contact", query);
+var response = await filemaker.Execute("your_layout_name", query);
 callback(null, response);
 ```
 
